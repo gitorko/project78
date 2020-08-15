@@ -1,5 +1,6 @@
 package com.demo.project78.rpc.server;
 
+import java.util.Scanner;
 import java.util.concurrent.TimeUnit;
 
 import lombok.SneakyThrows;
@@ -46,7 +47,8 @@ public class RPCDemoServer implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
         System.out.println("Waiting...");
-        TimeUnit.SECONDS.sleep(60);
+        new Scanner(System.in).nextLine();
+
     }
 }
 

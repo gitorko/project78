@@ -20,7 +20,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Component;
 
 @SpringBootApplication
-public class ExchangeDemo {
+public class TopicExchangeDemo {
 
     static final String topicExchangeName = "exchange1";
 
@@ -55,7 +55,7 @@ public class ExchangeDemo {
     }
 
     public static void main(String[] args) throws InterruptedException {
-        SpringApplication.run(ExchangeDemo.class, args).close();
+        SpringApplication.run(TopicExchangeDemo.class, args).close();
     }
 }
 
@@ -82,7 +82,7 @@ class Runner implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
         System.out.println("Sending message...");
-        rabbitTemplate.convertAndSend(ExchangeDemo.topicExchangeName, "foo.bar.baz", "Hello from RabbitMQ!");
+        rabbitTemplate.convertAndSend(TopicExchangeDemo.topicExchangeName, "foo.bar.baz", "Hello from RabbitMQ!");
         receiver.getLatch().await(10000, TimeUnit.MILLISECONDS);
     }
 

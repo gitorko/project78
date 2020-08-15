@@ -28,7 +28,7 @@ public class QueueDemo implements CommandLineRunner {
 
     @Bean
     public Queue hello() {
-        return new Queue("queue2");
+        return new Queue("queue2", false);
     }
 
 }
@@ -45,7 +45,7 @@ class MessageSender {
     public void send() {
         String message = "Hello World!";
         template.convertAndSend(queue.getName(), message);
-        System.out.println(" [x] Sent '" + message + "'");
+        System.out.println("Sent '" + message + "'");
     }
 }
 
@@ -54,6 +54,6 @@ class MessageReceiver {
 
     @RabbitHandler
     public void receive(String in) {
-        System.out.println(" [x] Received '" + in + "'");
+        System.out.println("Received '" + in + "'");
     }
 }
